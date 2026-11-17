@@ -435,7 +435,7 @@ mark{background:rgba(201,169,110,.15);color:var(--acc);border-radius:2px;padding
     <div><label class="flbl">Localidad</label><input class="finp" id="fLoc" placeholder="Pilar, Buenos Aires"></div>
   </div>
   <div class="frow2">
-    <div style="grid-column:1"><label class="flbl">N° de orden</label><input class="finp" id="fOrd" placeholder="A-0001" readonly style="opacity:.7;cursor:default"></div>
+    <div style="grid-column:1"><label class="flbl">N° de orden</label><input class="finp" id="fOrd" placeholder="A-00165" readonly style="opacity:.7;cursor:default"></div>
   </div>
   <div class="frow">
     <label class="flbl">Modalidad de precio</label>
@@ -1101,10 +1101,10 @@ function addCartPago(idx){if(!curPago)return;const p=PRODS[idx];const ap=isDoor(
 
 // ── MODAL ──
 async function openModal(){
-  document.getElementById('fOrd').value='A-'+String(++ordN).padStart(4,'0');
+  document.getElementById('fOrd').value='A-'+String(++ordN).padStart(5,'0');
   const fm=document.getElementById('fMode');if(fm)fm.value=curPago?P_MODAL[curPago]:'Sin medio de pago seleccionado';
   document.getElementById('mbg').classList.add('open');
-  try{const r=await fetch(GAS_URL+'?t='+Date.now(),{redirect:'follow'});const d=await r.json();if(d.nextNum){ordN=d.nextNum;document.getElementById('fOrd').value='A-'+String(ordN).padStart(4,'0');}}catch(e){}
+  try{const r=await fetch(GAS_URL+'?t='+Date.now(),{redirect:'follow'});const d=await r.json();if(d.nextNum){ordN=d.nextNum;document.getElementById('fOrd').value='A-'+String(ordN).padStart(5,'0');}}catch(e){}
 }
 function closeModal(){document.getElementById('mbg').classList.remove('open')}
 function validateModal(){
