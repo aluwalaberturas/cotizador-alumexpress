@@ -1102,6 +1102,7 @@ async function openModal(){
   document.getElementById('fOrd').value='A-'+String(++ordN).padStart(4,'0');
   const fm=document.getElementById('fMode');if(fm)fm.value=curPago?P_MODAL[curPago]:'Sin medio de pago seleccionado';
   document.getElementById('mbg').classList.add('open');
+  try{const r=await fetch(GAS_URL+'?t='+Date.now(),{redirect:'follow'});const d=await r.json();if(d.nextNum){ordN=d.nextNum;document.getElementById('fOrd').value='A-'+String(ordN).padStart(4,'0');}}catch(e){}
 }
 function closeModal(){document.getElementById('mbg').classList.remove('open')}
 function validateModal(){
